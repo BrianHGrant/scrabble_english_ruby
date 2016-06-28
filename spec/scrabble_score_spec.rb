@@ -23,4 +23,10 @@ describe('String#scrabble_score') do
   it("returns a scrabble score of 10 for letters Q, Z") do
     expect("q".scrabble_score()).to(eq(10))
   end
+  it("returns a scrabble score for capital and lowercase letters") do
+    expect("Q".scrabble_score()).to(eq(10))
+  end
+  it("returns a scrabble score for a word by adding scores for individual letters") do
+    expect("QUEEN".scrabble_score()).to(eq(14))
+  end
 end
