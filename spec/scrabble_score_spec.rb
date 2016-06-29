@@ -1,5 +1,5 @@
 require ('rspec')
-require ('scrabble_score.rb')
+require ('scrabble_score')
 
 describe('String#scrabble_score') do
   it("returns a scrabble score for a letter") do
