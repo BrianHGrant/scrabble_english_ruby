@@ -29,4 +29,7 @@ describe('String#scrabble_score') do
   it("returns a scrabble score for a word by adding scores for individual letters") do
     expect("QUEEN".scrabble_score()).to(eq(14))
   end
+  it("returns false if word is not in the english language") do
+    expect("qwigbo".english_verify?()).to(eq(false))
+  end
 end

@@ -1,6 +1,7 @@
 require('sinatra')
 require('sinatra/reloader')
 require('./lib/scrabble_score')
+require('./lib/english_verify')
 also_reload('lib/**/*.rb')
 
 get('/') do
@@ -8,6 +9,13 @@ get('/') do
 end
 
 get('/score') do
-  @score = params.fetch('word').scrabble_score()
-  erb(:score)
+  @word = params.fetch('word')
+  @verified_word = params.fetch('word').english_verify?()
+  if @verified_word == true
+    @score = params.fetch('word').scrabble_score()
+    erb(:score)
+  else
+    @message = "Your word: " + @word + " is not in the English language"
+    erb(:index)
+  end
 end
